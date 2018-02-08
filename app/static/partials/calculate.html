@@ -1,0 +1,14 @@
+<h1>Body mass index</h1>
+
+<div class="box" ng-controller="bmiController">
+    <h1>Enter your data</h1>
+    <form novalidate >
+        <input type="text" ng-model="height" name="w" required placeholder="Your height in centimeters"/>
+        <br>
+        <input type="password" ng-model="weight" name="h" required placeholder="Your weight in kilograms"/>
+        <br>
+        <input type="submit" value="Compute BMI" class="button" ng-click="bmi()"/>
+    </form>
+    <h2>Your BMI: {{bmiResult}}</h2>
+</div>
+<h2><a href="/#/">Home</a></h2>

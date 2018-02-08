@@ -9,6 +9,6 @@
         <br>
         <input type="submit" value="Compute BMI" class="button" ng-click="bmi()"/>
     </form>
-    <h2>Your BMI: {{bmiResult}}</h2>
+    <h3 ng-if="showResult">BMI: {{bmiResult}}.  You are {{category}}</h3>
 </div>
 <h2><a href="/#/">Home</a></h2>

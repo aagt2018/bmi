@@ -11,8 +11,10 @@ class User:
         pass
 
     def add(self, user, password):
-        if len(self.get(user)) > 0:
-            return False
+        existing_user = self.get(user)
+        if existing_user:
+            return existing_user[0][1] == password
+
         con = db.connect(self.DATABASE_NAME)
         cur = con.cursor()
         cur.execute(self.INSERT_USER_SQL, (user, password))

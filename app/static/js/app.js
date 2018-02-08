@@ -21,7 +21,7 @@ bmiApp.config(['$routeProvider',
 
 
 bmiApp.controller("bmiController", function($scope, $location, $http) {
-    $scope.alreadyUsed = false;
+    $scope.showResult = false;
     $scope.register = function() {
         var username = $scope.username;
         var password = $scope.password
@@ -50,6 +50,8 @@ bmiApp.controller("bmiController", function($scope, $location, $http) {
             data: {"weight": weight, "height": height}
         }).then(function mySuccess(response) {
             $scope.bmiResult = response.data.bmi;
+            $scope.category = response.data.category;
+            $scope.showResult = true;
         }, function myError(response) {
         });
     };

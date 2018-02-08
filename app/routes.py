@@ -4,6 +4,7 @@ from flask import jsonify
 import json
 from app import app
 from app.models import User
+from app.bmi import Bmi
 
 
 @app.route("/")
@@ -25,7 +26,9 @@ def register():
 def calculate_bmi():
     data = json.loads(request.data.decode())
     weight = float(data['weight'])
-    height = float(data['height']) / 100
-    bmi = weight / (height * height)
+    height = float(data['height'])
 
-    return jsonify(bmi=round(bmi, 2)), 200
+    bmi = Bmi(weight=weight, height=height)
+    index, category = bmi.calculate()
+
+    return jsonify(bmi=index, category=category), 200
